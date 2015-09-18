@@ -1,25 +1,30 @@
 /**************
  * Script URI:  https://github.com/gabenix/snippits/createClassArray.js
- * Description: Create an array of all elements with a class name.
+ * Description: Dependable method of creating an array of all elements with a class name.
  * Author:      Gabriel Nix
  * Author URI:  http://www.gabenix.com
  **************/
 
-/* Function to create array of all elements with class - placed in onLoad event.
+/* Function to create array of all elements with a classname - execute after content loaded.
  * EXAMPLE: classArray(document.body,'myClass'); */
-function classArray(node, class) {
+function classArray(node, className) {
 	var a = [];
-	var re = new RegExp('(^| )'+class+'( |$)');
+	var re = new RegExp('(^| )' + className + '( |$)');
 	var els = node.getElementsByTagName("*");
-	for(var i=0,j=els.length; i<j; i++)
-		if(re.test(els[i].class))a.push(els[i]);
-	return a;}
+	for (var i = 0, j = els.length; i < j; i++)
+		if (re.test(els[i].className)) a.push(els[i]);
+	return a;
+}
 
-/* Use this function to execute code on your class array. 
- * EXAMPLE: classEx(myClass,myFunction); */
-function classEx(class,func){
-for (var i = 0; i < class.length; i++) {
-	if (i in class) {
-	func(class[i]);	
-}}}
+/* Use this function to loop across your class array. 
+ * EXAMPLE 1: classEx(myClassArray,myFunction); 
+ * EXAMPLE 2: classEx(myClassArray,function(x){}); 
+ */
+function classEx(className, func) {
+	for (var i = 0; i < className.length; i++) {
+		if (i in className) {
+			func(className[i]);
+		}
+	}
+}
 
