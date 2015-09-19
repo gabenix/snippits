@@ -28,3 +28,14 @@ function classEx(className, func) {
 	}
 }
 
+/************* USAGE EXAMPLE BELOW *****************/
+
+// Fall-back to our nifty legacy script if older browsers.
+if (document.getElementsByClassName) var myClassArray document.getElementsByClassName('fadeIn');
+else if (document.querySelectorAll) var myClassArray document.querySelectorAll('.fadeIn');
+else var myClassArray = classArray(document.body,'myClass');
+
+// Execute some code on our array of elements.
+classEx(myClassArray,function(x){/*do something*/});
+
+
